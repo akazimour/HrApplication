@@ -1,0 +1,89 @@
+server:
+ port: '8050'
+
+eureka:
+  client:
+    serviceUrl:
+     defaultZone: http://localhost:8090/eureka
+
+spring:
+
+  application:
+    name: HrApplicationGateway
+  cloud:
+    gateway:
+
+      discovery:
+        locator:
+          enabled: 'true'
+          lower-case-service-id: 'true'
+      routes:
+
+        - id: Employee-Ms
+          uri: http://localhost:8055
+          predicates:
+            - Path=/api/employees/**
+          filters:
+
+            - name: CircuitBreaker
+              args:
+                name: employeeFilter
+                fallbackUri: forward:http://localhost:8050/fallback/employeeFallBack
+
+                uri: http://localhost:8050
+                predicates:
+                  - Path=/fallback
+
+
+        - id: Holiday-Ms
+          uri: http://localhost:8060
+          predicates:
+            - Path=/api/holidays/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: holidayFilter
+                fallbackUri: forward:http://localhost:8050/fallback/holidayFallBack
+
+        - id: Company-Ms
+          uri: http://localhost:8056
+          predicates:
+            - Path=/api/companies/**
+          filters:
+      default-filters:
+            - name: CircuitBreaker
+              args:
+                name: companyFilter
+                fallbackUri: forward:http://localhost:8050/fallback/companyFallBack
+                uri: http://localhost:8050
+                predicates:
+                  - Path=/fallback
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+
+  health:
+    circuitbreakers:
+      enabled: 'true'
+    ratelimiters:
+      enabled: 'true'
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      companyFilter:
+        eventConsumerBufferSize: '10'
+        registerHealthIndicator: 'true'
+        minimumNumberOfCalls: '5'
+        automaticTransitionFromOpenToHalfOpenEnabled: 'true'
+        slidingWindowSize: '10'
+        permittedNumberOfCallsInHalfOpenState: '3'
+        waitDurationInOpenState: 5s
+        failureRateThreshold: '50'
+        slidingWindowType: count_based

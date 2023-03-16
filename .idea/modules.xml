@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Company-Ms/Company-Ms.iml" filepath="$PROJECT_DIR$/Company-Ms/Company-Ms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ConfigServer/ConfigServer.iml" filepath="$PROJECT_DIR$/ConfigServer/ConfigServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Employee-Ms/Employee-Ms.iml" filepath="$PROJECT_DIR$/Employee-Ms/Employee-Ms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EurekaServer/EurekaServer.iml" filepath="$PROJECT_DIR$/EurekaServer/EurekaServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Holiday-Ms/Holiday-Ms.iml" filepath="$PROJECT_DIR$/Holiday-Ms/Holiday-Ms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/HrApplication.iml" filepath="$PROJECT_DIR$/.idea/HrApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HrApplicationGateway/HrApplicationGateway.iml" filepath="$PROJECT_DIR$/HrApplicationGateway/HrApplicationGateway.iml" />
+    </modules>
+  </component>
+</project>

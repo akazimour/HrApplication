@@ -1,0 +1,36 @@
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+         uri: https://github.com/woid1000/config-repo.git
+---
+spring:
+  profiles:
+    active:
+      - dev
+  application:
+    name: dev-test-config-repo
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/woid1000/dev-test-config-repo.git
+          skipSslValidation: 'true'
+          clone-on-start: 'true'
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+eureka:
+  client:
+    fetch-registry: 'true'
+    register-with-eureka: 'true'
+    serviceUrl:
+      defaultZone: http://localhost:8090/eureka
+server:
+  port: 8888
