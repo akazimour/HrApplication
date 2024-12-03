@@ -4,11 +4,11 @@ Repository for a beta Hr Employee registration application Spring Boot project u
 
 You can run the services starting with:
 
-Eureka-Server
-HrApplicationGateway
-Config-Server
-Company-Ms
-Employee-Ms
-Holiday-Ms
+Eureka-Server,
+HrApplicationGateway,
+Config-Server,
+Company-Ms,
+Employee-Ms,
+Holiday-Ms,
 
 After running each microservice you have an opportunity to register new companies, you can add employees to these companies, setting their holiday requests, getting them approved or rejected, additionally there are several searching and filtering opportunities checking salaries, positions, entering date, names etc.. Rest-API end points are accessible can be tested using postman as this project does not include Security.
